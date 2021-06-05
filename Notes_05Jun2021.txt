@@ -80,7 +80,7 @@ JSP building blocks:
 
 	scriplet			<%	%>
 	declaration			<%!	%>
-	comment				<%!-	--%>
+	comment				<%--	--%>
 	expression			<%=	%>
 	directive			<%@	%>
 
@@ -122,4 +122,130 @@ in expression language
 
 
 JSTL		
+	JSP standard Tag Library
 
+
+	why we need this?
+
+	in HTML code, how can we write
+		if condition?
+		for loop?
+
+	
+	
+what is JSTL?
+	it is a custom tag library
+
+	what is custom tag?		any tag other than HTML is a custom tag
+
+	jsp language has created lot of such tags
+
+	<jsp:include>
+	<jsp:forward>			thse are called as action tags
+
+	we need to download jstl jar file
+
+	1.1
+	1.2
+
+	we use 1.2
+
+how do you add jar file to a dynamic web project?
+	in java project, we add jar files in "build path"
+	but in dynamic web project?		we add jar files into the "WEB-INF/lib" folder
+
+
+we can add jstl library in our jsp file, by using
+	taglib directive
+
+	lot of JSTL libraries
+		ex
+			core
+			sql
+			format
+			
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+
+	for (Branch b : branchList) {
+						
+						%>
+						<TR>
+						<%
+						out.println("<TR>");
+						out.println("<TD>");
+						out.print(b.getBid());
+						out.println("</TD>");
+						out.println("<TD>");
+						out.print(b.getBname());
+						out.println("</TD>");
+						out.println("<TD>");
+						out.print(b.getBcity());
+						out.println("</TD>");
+						out.println("<TD><a href=\"branch?btn=Select&bid=" + b.getBid() + "\">Select</a></TD>");
+						out.println("</TR>");
+					}
+
+
+
+
+
+in oracle
+	BLOB				for binary data
+	CLOB				for character data
+
+in mysql
+	tinyblob
+	mediumblob
+	longblob
+
+CREATE TABLE branch1
+(
+	bid char(6) primary key,
+    bname varchar(20),
+    bcity varchar(20),
+    pic longblob
+);
+
+
+
+
+
+FORM ACTION=GET
+
+GET Method cannot send multi part form data			(large objects are sent in multiparts)
+
+use POST method when we upload file
+
+		<form method="POST" action="branch" enctype="multipart/form-data">
+
+@MultipartConfig
+	use this annotation on the servlet		(or controller)
+
+
+
+how we retrieve the image byte[] from the input type=file?
+
+	Part part=request.getPart("pic");
+
+	FileInputStream fis=	part.getInputStream();
+	first of all, we need to declare 		byte []		but what is the size of this array?
+		size of the file?
+	fis.available()			this method returns the no of bytes
+
+
+
+
+whenever you want to display the picture (not when we have a file)
+	if you have a picture file, then it is simple
+		<img src=filename.jpg" />
+
+	but here, how do you display a picture from byte[]		?????
+	not possible,
+		so we convert the byte[] into a base 64 string, which can be displayed in <img> 
+
+	how can i convert byte[] into a base 64 string?
+
+	
