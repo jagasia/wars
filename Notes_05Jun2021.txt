@@ -1,0 +1,125 @@
+	so far, we created Servlet programs	
+
+		java class that can contain html code
+
+	PrintWriter out=response.getWriter();
+	out.print("Click <a href=\"login.html\"> here </a>to go to home page");
+
+sometimes, this <a> is printed in the browser rather than making it a hyper link.
+
+	response.setContentType("text/html");
+
+
+
+looking at the above code, we find a java program containing html code inside
+
+
+
+jsp
+	Java Server Pages
+
+
+
+	we write HTML code, inside which we embed Java code
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+
+this above line differentiates a JSP file from a HTML file
+
+what is this line?
+	this is called as "directive"
+	
+	Page directive informs the runtime that this page is coded in java and content type is text/html character set is ISO/ ascii or utf-8
+
+
+
+<%	%>
+	this is called as scriplet		inside this scriplet tag, we can write java code
+
+
+in JSP,
+	we do not need to declare the below code:
+		PrintWriter out=response.getWriter();
+
+	it is automatically done by container 
+
+	not only "out" variable,
+
+	lot of variables are already present. we do not need to declare
+
+they are called as implicit objects
+
+	request
+	response
+	application
+	session
+	out
+	
+
+these are implicit objects
+
+
+JSP building blocks:
+
+	scriplet			<%	%>
+	declaration			<%!	%>
+	comment				<%!-	--%>
+	expression			<%=	%>
+	directive			<%@	%>
+
+
+Expression:
+
+	<%=20 %>		this will be equal to 				out.print(20);
+	
+Directive:
+
+	<%@page
+	<%@include
+	<%@taglib
+
+	only 3 directives present in  a jsp file
+
+
+
+how we can display dynamic content in html input controls?
+	
+	response.sendRedirect()		method is used to redirect to other pages using java servlet code
+
+
+
+Branch ID: <input type=text name=bid class="form-control" value="<%=bid %>" /> Branch
+
+
+if bid variable is not initialized then we have problem
+
+jsp provides EL		(Expression language) to shorten thse codes
+
+${}			this is EL
+
+
+in expression language	
+	request.getParameter("bid")		is 		${param.bid}
+
+
+
+
+JSTL		
+
